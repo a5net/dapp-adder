@@ -1,21 +1,33 @@
 <html>
-  <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="web3.js"></script>
-    <script src="bundle.js"></script>
-  </head>
-  <body>
-    <div class="container center">
-      <div class="row">
-        <div class="col-md-12">
-          <h1>Welcome to ADD game!</h1>
-          <button class="btn btn-primary">Start</button>
-          <button class="btn btn-primary">Add One</button>
-          <button class="btn btn-primary">Add Two</button>
-          <button class="btn btn-primary">Add Three</button>
-        </div>
-        <h2 id="message"></h2>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container center">
+    <div class="row">
+      <div class="col-md-12">
+        <h1></h1>
+        <button id="start" class="btn btn-primary">Start</button>
+        <button id="addTwo" class="btn btn-primary">Add Two</button>
+        <button id="addThree" class="btn btn-primary">Add Three</button>
       </div>
     </div>
-  </body>
+    <div class="row">
+      <h2 id="message"></h2>
+    </div>
+    <div class="row">
+      <h2 id="total"></h2>
+    </div>
+    <div class="row">
+      <h2 id="prize"></h2>
+    </div>
+  </div>
+</body>
+<script src="web3.js"></script>
+<script src="contract.js"></script>
+<script src="bundle.js"></script>
+
 </html>

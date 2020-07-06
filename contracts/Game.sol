@@ -28,6 +28,8 @@ contract Game {
         return string(abi.encodePacked(a, b, c));
     }
 
+    function deposit() public payable {}
+
     function uint2str(uint256 _i)
         internal
         pure
@@ -51,11 +53,11 @@ contract Game {
         return string(bstr);
     }
 
-    function start() public returns (string memory) {
+    function start() public {
         goal =
             (uint256(
                 keccak256(abi.encodePacked(block.timestamp, block.difficulty))
-            ) % 97) +
+            ) % 30) +
             11;
         current =
             uint256(
@@ -66,51 +68,24 @@ contract Game {
         message = append(uint2str(current), " => ", uint2str(goal));
         started = true;
         current_prize = 100;
-
-        return message;
     }
 
-    function addOne() public returns (string memory) {
-        if (!started) {
-            message = "Please, start the game first";
-        } else {
-            current = current + 1;
-            current_prize = current_prize - 10;
-
-            if (current == goal) {
-                started = false;
-                total_score = total_score + current_prize;
-                message = append(
-                    "Congrats, you won! Your prize is ",
-                    uint2str(current_prize),
-                    ". Total Score: ",
-                    uint2str(total_score)
-                );
-            } else if (current > goal) {
-                message = "You lost!";
-                started = false;
-            } else {
-                message = append(uint2str(current), " => ", uint2str(goal));
-            }
-        }
-        return message;
-    }
-
-    function addTwo() public returns (string memory) {
+    function addTwo() public {
         if (!started) {
             message = "Please, start the game first";
         } else {
             current = current + 2;
-            current_prize = current_prize - 5;
+
+            if (current_prize < 15) {
+                current_prize = 0;
+            } else {
+                current_prize = current_prize - 15;
+            }
+
             if (current == goal) {
                 total_score = total_score + current_prize;
                 started = false;
-                message = append(
-                    "Congrats, you won! Your prize is ",
-                    uint2str(current_prize),
-                    ". Total Score: ",
-                    uint2str(total_score)
-                );
+                message = "Congrats, you won! Press start to play again";
             } else if (current > goal) {
                 message = "You lost!";
                 started = false;
@@ -118,24 +93,24 @@ contract Game {
                 message = append(uint2str(current), " => ", uint2str(goal));
             }
         }
-        return message;
     }
 
-    function addEight() public returns (string memory) {
+    function addThree() public {
         if (!started) {
             message = "Please, start the game first";
         } else {
-            current = current + 8;
-            current_prize = current_prize - 2;
+            current = current + 3;
+
+            if (current_prize < 5) {
+                current_prize = 0;
+            } else {
+                current_prize = current_prize - 5;
+            }
+
             if (current == goal) {
                 started = false;
                 total_score = total_score + current_prize;
-                message = append(
-                    "Congrats, you won! Your prize is ",
-                    uint2str(current_prize),
-                    ". Total Score: ",
-                    uint2str(total_score)
-                );
+                message = "Congrats, you won! Press start to play again";
             } else if (current > goal) {
                 message = "You lost!";
                 started = false;
@@ -143,7 +118,6 @@ contract Game {
                 message = append(uint2str(current), " => ", uint2str(goal));
             }
         }
-        return message;
     }
 
     function showMessage() public view returns (string memory) {
