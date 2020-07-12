@@ -7,27 +7,28 @@
 
 <body>
   <div class="container center">
-    <div class="row">
-      <div class="col-md-12">
-        <h1></h1>
-        <button id="start" class="btn btn-primary">Start</button>
-        <button id="addTwo" class="btn btn-primary">Add Two</button>
-        <button id="addThree" class="btn btn-primary">Add Three</button>
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="display-4" id="message">Press start to play the game</h1>
+    </div>
+    <div class="container">
+      <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 box-shadow">
+          <button id="start" class="btn btn-lg btn-block btn-outline-primary">Start</button>
+        </div>
+        <div class="card mb-4 box-shadow">
+          <button id="addTwo" class="btn btn-lg btn-block btn-outline-primary">Add Two</button>
+        </div>
+        <div class="card mb-4 box-shadow">
+          <button id="addThree" class="btn btn-lg btn-block btn-outline-primary">Add Three</button>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <h2 id="message"></h2>
-    </div>
-    <div class="row">
-      <h2 id="total"></h2>
-    </div>
-    <div class="row">
-      <h2 id="prize"></h2>
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h3 class="display-8" id="total">Total Score: 0</h3>
+      <h3 class="display-8" id="prize">Current Prize: 0</h3>
     </div>
   </div>
 </body>
-<script src="web3.js"></script>
-<script src="contract.js"></script>
 <script src="bundle.js"></script>
 
 </html>

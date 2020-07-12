@@ -30,6 +30,7 @@ const initWeb3 = () => {
 
 const initContract = () => {
     let deployementKey = Object.keys(Game.networks)[0];
+    console.log("Network", deployementKey);
     return new web3.eth.Contract(
         Game.abi,
         Game
